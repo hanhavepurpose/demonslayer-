@@ -1,0 +1,732 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#09090d">
+    <meta name="description" content="Jelajahi karakter Demon Slayer, profil, kekuatan, dan efek jurus mereka.">
+    <title>Api atau Bulan? | Kimetsu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- CINEMATIC OPENING -->
+<div class="cinematic-intro" id="cinematicIntro">
+    <div class="intro-red-glow"></div>
+    <div class="intro-particles" id="introParticles"></div>
+
+    <div class="intro-content">
+        <p class="intro-overline">THE WORLD OF DEMON SLAYER</p>
+        <div class="intro-emblem">
+            <span class="emblem-line"></span>
+            <span class="emblem-symbol">鬼</span>
+            <span class="emblem-line"></span>
+        </div>
+        <h1 class="intro-logo">KIMETSU<span>.</span></h1>
+        <p class="intro-subtitle">BETWEEN LIGHT AND DARKNESS</p>
+        <div class="intro-divider"></div>
+        <button class="intro-enter" id="introEnter" type="button">
+            <span>ENTER THE WORLD</span>
+            <span class="intro-arrow">↗</span>
+        </button>
+        <button class="intro-skip" id="introSkip" type="button">SKIP INTRO</button>
+    </div>
+
+    <div class="intro-corner intro-corner-top"></div>
+    <div class="intro-corner intro-corner-bottom"></div>
+    <p class="intro-footer">DEMON SLAYER CHARACTER UNIVERSE</p>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="#home" class="nav-logo">KIMETSU<span>.</span></a>
+    <div class="nav-links">
+        <a href="#home">HOME</a>
+        <a href="#characters">CHARACTERS</a>
+        <a href="#about">ABOUT</a>
+    </div>
+    <a href="#characters" class="nav-button">EXPLORE ↗</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-character">
+        <img src="images/akaza.png.jpg" alt="Akaza">
+    </div>
+    <p class="label">DEMON SLAYER • CHARACTER UNIVERSE</p>
+    <h1>API ATAU<br><span>BULAN?</span></h1>
+    <p class="description">
+        Di antara cahaya dan kegelapan,
+        setiap petarung punya alasan
+        untuk terus berdiri.
+    </p>
+    <a href="#characters" class="hero-button">
+        JELAJAHI KARAKTER <span>↗</span>
+    </a>
+</section>
+
+<!-- CHARACTERS -->
+<section class="characters" id="characters">
+    <p class="label">THE DEMON SLAYER UNIVERSE</p>
+    <h2>PILIH <span>KARAKTERMU</span></h2>
+    <p class="characters-description">
+        Klik karakter untuk membuka profil dan melihat kekuatan mereka.
+    </p>
+
+    <div class="character-grid">
+        <button class="character-card" type="button"
+            data-character="AKAZA" aria-label="Lihat detail Akaza">
+            <img src="images/akaza.png.jpg" alt="Akaza">
+            <div class="character-info">
+                <p>UPPER RANK THREE</p>
+                <h3>AKAZA</h3>
+                <span>The Fighting Demon</span>
+                <div class="card-explore">VIEW PROFILE ↗</div>
+            </div>
+        </button>
+
+        <button class="character-card" type="button"
+            data-character="TANJIRO" aria-label="Lihat detail Tanjiro">
+            <img src="images/tanjiro.jpg" alt="Tanjiro Kamado">
+            <div class="character-info">
+                <p>DEMON SLAYER CORPS</p>
+                <h3>TANJIRO</h3>
+                <span>The Demon Slayer</span>
+                <div class="card-explore">VIEW PROFILE ↗</div>
+            </div>
+        </button>
+
+        <button class="character-card" type="button"
+            data-character="ZENITSU" aria-label="Lihat detail Zenitsu">
+            <img src="images/zenitsu.jpg" alt="Zenitsu Agatsuma">
+            <div class="character-info">
+                <p>THUNDER BREATHING</p>
+                <h3>ZENITSU</h3>
+                <span>The Thunder Breather</span>
+                <div class="card-explore">VIEW PROFILE ↗</div>
+            </div>
+        </button>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+    <p class="label">THE WORLD OF KIMETSU</p>
+    <h2>BEYOND THE <span>BATTLE</span></h2>
+    <p>
+        Di dunia yang dipenuhi iblis dan para pembasmi,
+        setiap karakter memiliki kisah, kekuatan, dan alasan
+        untuk terus berjuang. Temukan karakter favoritmu
+        dan jelajahi dunia Demon Slayer.
+    </p>
+</section>
+
+<!-- CHARACTER DETAIL MODAL -->
+<div class="character-modal" id="characterModal"
+    aria-hidden="true" role="dialog"
+    aria-modal="true" aria-labelledby="modalName">
+
+    <div class="modal-content">
+        <button class="modal-close" id="modalClose"
+            type="button" aria-label="Tutup detail">&times;</button>
+
+        <div class="detail-layout">
+            <div class="detail-portrait">
+                <div class="portrait-aura"></div>
+                <img id="modalImage" src="images/akaza.png.jpg" alt="Potret karakter">
+                <div class="portrait-caption">
+                    <span id="modalPortraitTag">UPPER RANK THREE</span>
+                    <span>CHARACTER FILE</span>
+                </div>
+            </div>
+
+            <div class="detail-information">
+                <p class="modal-label" id="modalLabel">CHARACTER PROFILE</p>
+                <h2 id="modalName">AKAZA</h2>
+                <p class="modal-nickname" id="modalNickname">The Fighting Demon</p>
+                <div class="modal-line"></div>
+
+                <p class="detail-heading">CHARACTER OVERVIEW</p>
+                <p id="modalDescription" class="detail-description"></p>
+
+                <div class="detail-facts">
+                    <div class="detail-fact">
+                        <span>FACTION</span>
+                        <strong id="modalFaction"></strong>
+                    </div>
+                    <div class="detail-fact">
+                        <span>COMBAT STYLE</span>
+                        <strong id="modalStyle"></strong>
+                    </div>
+                </div>
+
+                <p class="detail-heading stats-heading">COMBAT ATTRIBUTES</p>
+                <div id="modalStats" class="detail-stats"></div>
+
+                <div class="detail-signature">
+                    <span>SIGNATURE ABILITY</span>
+                    <strong id="modalAbility"></strong>
+                </div>
+
+                <button class="technique-button" id="techniqueButton" type="button">
+                    <span>⚔</span> UNLEASH TECHNIQUE
+                </button>
+
+                <p class="modal-hint">DEMON SLAYER CHARACTER UNIVERSE</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- LEVEL 2: ANIME TECHNIQUE EFFECT -->
+<div class="technique-overlay" id="techniqueOverlay" aria-hidden="true">
+    <div class="technique-flash"></div>
+    <div class="technique-slash"></div>
+    <div class="technique-ring"></div>
+    <div class="technique-title" id="techniqueTitle">TECHNIQUE</div>
+</div>
+
+<!-- LEVEL 3: CINEMATIC BATTLE EFFECT -->
+<div class="battle-aura" id="battleAura" aria-hidden="true"></div>
+<div class="battle-flash" id="battleFlash" aria-hidden="true"></div>
+
+<script>
+"use strict";
+
+// ==========================================
+// DATA KARAKTER
+// ==========================================
+
+const characterData = {
+    AKAZA: {
+        name: "AKAZA",
+        label: "UPPER RANK THREE",
+        nickname: "The Fighting Demon",
+        image: "images/akaza.png.jpg",
+        faction: "Demon • Twelve Kizuki",
+        style: "Destructive Death",
+        description:
+            "Iblis petarung yang mengandalkan kemampuan bela diri luar biasa. " +
+            "Akaza sangat menghargai kekuatan dan menantang lawan yang tangguh.",
+        ability: "Compass Needle",
+        technique: "DESTRUCTIVE DEATH",
+        color: "#ff579c",
+        stats: [
+            { name: "STRENGTH", value: 96 },
+            { name: "SPEED", value: 94 },
+            { name: "TECHNIQUE", value: 98 }
+        ]
+    },
+
+    TANJIRO: {
+        name: "TANJIRO",
+        label: "DEMON SLAYER CORPS",
+        nickname: "The Kind-Hearted Slayer",
+        image: "images/tanjiro.jpg",
+        faction: "Human • Demon Slayer Corps",
+        style: "Water & Sun Breathing",
+        description:
+            "Pembasmi iblis yang gigih dan berhati baik. Tanjiro berjuang " +
+            "untuk menyelamatkan Nezuko dan melindungi orang lain.",
+        ability: "Hinokami Kagura",
+        technique: "HINOKAMI KAGURA",
+        color: "#ff5938",
+        stats: [
+            { name: "STRENGTH", value: 85 },
+            { name: "SPEED", value: 88 },
+            { name: "TECHNIQUE", value: 92 }
+        ]
+    },
+
+    ZENITSU: {
+        name: "ZENITSU",
+        label: "THUNDER BREATHING",
+        nickname: "The Thunder Breather",
+        image: "images/zenitsu.jpg",
+        faction: "Human • Demon Slayer Corps",
+        style: "Thunder Breathing",
+        description:
+            "Pembasmi iblis yang terlihat penakut, tetapi memiliki kecepatan " +
+            "luar biasa. Teknik petirnya menghasilkan serangan sangat cepat.",
+        ability: "Thunderclap and Flash",
+        technique: "THUNDERCLAP & FLASH",
+        color: "#ffe34d",
+        stats: [
+            { name: "STRENGTH", value: 78 },
+            { name: "SPEED", value: 99 },
+            { name: "TECHNIQUE", value: 91 }
+        ]
+    }
+};
+
+// ==========================================
+// ELEMEN DAN STATE
+// ==========================================
+
+const modal = document.getElementById("characterModal");
+const closeButton = document.getElementById("modalClose");
+const modalImage = document.getElementById("modalImage");
+const modalName = document.getElementById("modalName");
+const modalLabel = document.getElementById("modalLabel");
+const modalNickname = document.getElementById("modalNickname");
+const modalPortraitTag = document.getElementById("modalPortraitTag");
+const modalDescription = document.getElementById("modalDescription");
+const modalFaction = document.getElementById("modalFaction");
+const modalStyle = document.getElementById("modalStyle");
+const modalStats = document.getElementById("modalStats");
+const modalAbility = document.getElementById("modalAbility");
+
+const techniqueButton = document.getElementById("techniqueButton");
+const techniqueOverlay = document.getElementById("techniqueOverlay");
+const techniqueTitle = document.getElementById("techniqueTitle");
+
+const battleAura = document.getElementById("battleAura");
+const battleFlash = document.getElementById("battleFlash");
+
+let lastFocusedElement = null;
+let currentCharacterKey = null;
+let techniqueTimer = null;
+let battleEffectTimer = null;
+
+// ==========================================
+// MEMBUKA PROFIL KARAKTER
+// ==========================================
+
+function openCharacter(name, trigger) {
+    const data = characterData[name];
+    if (!data) return;
+
+    currentCharacterKey = name;
+    lastFocusedElement = trigger || document.activeElement;
+
+    
+document.querySelectorAll(".character-card").forEach(card => {
+    const selected = card.dataset.character === name;
+
+    card.classList.toggle("character-selected", selected);
+
+    if (selected) {
+        
+        card.setAttribute("aria-current", "true");
+    } else {
+        card.removeAttribute("aria-current");
+    }
+});
+
+
+    modalImage.src = data.image;
+    modalImage.alt = data.name;
+    modalName.textContent = data.name;
+    modalLabel.textContent = data.label;
+    modalNickname.textContent = data.nickname;
+    modalPortraitTag.textContent = data.label;
+    modalDescription.textContent = data.description;
+    modalFaction.textContent = data.faction;
+    modalStyle.textContent = data.style;
+    modalAbility.textContent = data.ability;
+
+    modal.style.setProperty("--modal-glow", data.color);
+    modalStats.replaceChildren();
+
+    data.stats.forEach(stat => {
+        const item = document.createElement("div");
+        item.className = "stat-item";
+
+        const header = document.createElement("div");
+        header.className = "stat-header";
+
+        const label = document.createElement("span");
+        label.textContent = stat.name;
+
+        const number = document.createElement("strong");
+        number.textContent = stat.value + "%";
+
+        const track = document.createElement("div");
+        track.className = "stat-track";
+
+        const fill = document.createElement("div");
+        fill.className = "stat-fill";
+        fill.style.width = stat.value + "%";
+
+        header.append(label, number);
+        track.appendChild(fill);
+        item.append(header, track);
+        modalStats.appendChild(item);
+    });
+
+    modal.classList.remove("closing");
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+
+    closeButton.focus();
+}
+
+document.querySelectorAll(".character-card").forEach(card => {
+    card.addEventListener("click", () => {
+        openCharacter(card.dataset.character, card);
+    });
+});
+
+// ==========================================
+// TUTUP MODAL
+// ==========================================
+
+function closeModal() {
+    if (!modal.classList.contains("active")) return;
+
+    modal.classList.remove("active");
+    modal.classList.add("closing");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+
+    setTimeout(() => {
+        modal.classList.remove("closing");
+    }, 400);
+
+    if (lastFocusedElement) lastFocusedElement.focus();
+}
+
+closeButton.addEventListener("click", closeModal);
+
+modal.addEventListener("click", event => {
+    if (event.target === modal) closeModal();
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && modal.classList.contains("active")) {
+        closeModal();
+    }
+});
+
+// ==========================================
+// BERSIHKAN EFEK JURUS
+// ==========================================
+
+function clearTechniqueParticles() {
+    techniqueOverlay
+        .querySelectorAll(
+            ".technique-fire, .technique-fire-core, " +
+            ".technique-bolt, .technique-shockwave, " +
+            ".technique-spark"
+        )
+        .forEach(element => element.remove());
+}
+
+// ==========================================
+// LEVEL 3: CINEMATIC BATTLE MODE
+// ==========================================
+
+function unleashBattleEffect(data) {
+    if (!battleAura || !battleFlash) return;
+
+    clearTimeout(battleEffectTimer);
+
+    battleAura.classList.remove("active");
+    battleFlash.classList.remove("active");
+    document.body.classList.remove("battle-shake");
+
+    battleAura.style.setProperty("--battle-color", data.color);
+    battleFlash.style.setProperty("--battle-color", data.color);
+
+    void battleAura.offsetWidth;
+
+    battleAura.classList.add("active");
+    battleFlash.classList.add("active");
+    document.body.classList.add("battle-shake");
+
+    battleEffectTimer = setTimeout(() => {
+        battleAura.classList.remove("active");
+        battleFlash.classList.remove("active");
+        document.body.classList.remove("battle-shake");
+    }, 1200);
+}
+
+// ==========================================
+// LEVEL 2 + LEVEL 3: EFEK JURUS
+// ==========================================
+
+function unleashTechnique() {
+    const name = currentCharacterKey;
+    const data = characterData[name];
+
+    if (!data || techniqueOverlay.classList.contains("active")) {
+        return;
+    }
+
+    clearTechniqueParticles();
+
+    techniqueOverlay.dataset.character = name;
+    techniqueOverlay.style.setProperty(
+        "--technique-color",
+        data.color
+    );
+
+    techniqueTitle.textContent = data.technique;
+
+    // Jalankan efek cinematic layar
+    unleashBattleEffect(data);
+
+    // Mulai animasi jurus
+    techniqueOverlay.classList.remove("active");
+    void techniqueOverlay.offsetWidth;
+
+    techniqueOverlay.classList.add("active");
+    techniqueOverlay.setAttribute("aria-hidden", "false");
+
+    // TANJIRO: TEBASAN API
+    if (name === "TANJIRO") {
+        const fire = document.createElement("div");
+        fire.className = "technique-fire";
+        techniqueOverlay.appendChild(fire);
+
+        const fireCircle = document.createElement("div");
+        fireCircle.className = "technique-fire-core";
+        techniqueOverlay.appendChild(fireCircle);
+    }
+
+    // ZENITSU: SAMBARAN PETIR
+    if (name === "ZENITSU") {
+        for (let i = 0; i < 7; i++) {
+            const bolt = document.createElement("div");
+            bolt.className = "technique-bolt";
+
+            bolt.style.setProperty(
+                "--bolt-x",
+                `${8 + i * 14}%`
+            );
+
+            bolt.style.setProperty(
+                "--bolt-delay",
+                `${i * 0.045}s`
+            );
+
+            techniqueOverlay.appendChild(bolt);
+        }
+    }
+
+    // AKAZA: GELOMBANG KEJUT
+    if (name === "AKAZA") {
+        for (let i = 0; i < 3; i++) {
+            const wave = document.createElement("div");
+            wave.className = "technique-shockwave";
+            wave.style.animationDelay = `${i * 0.13}s`;
+            techniqueOverlay.appendChild(wave);
+        }
+    }
+
+    // PARTIKEL AURA
+    for (let i = 0; i < 24; i++) {
+        const spark = document.createElement("div");
+        spark.className = "technique-spark";
+
+        spark.style.setProperty(
+            "--spark-x",
+            `${10 + Math.random() * 80}%`
+        );
+        spark.style.setProperty(
+            "--spark-y",
+            `${15 + Math.random() * 70}%`
+        );
+        spark.style.setProperty(
+            "--spark-size",
+            `${3 + Math.random() * 6}px`
+        );
+        spark.style.setProperty(
+            "--spark-dx",
+            `${(Math.random() - 0.5) * 280}px`
+        );
+        spark.style.setProperty(
+            "--spark-dy",
+            `${(Math.random() - 0.5) * 280}px`
+        );
+        spark.style.setProperty(
+            "--spark-delay",
+            `${Math.random() * 0.2}s`
+        );
+
+        techniqueOverlay.appendChild(spark);
+    }
+
+    clearTimeout(techniqueTimer);
+
+    techniqueTimer = setTimeout(() => {
+        techniqueOverlay.classList.remove("active");
+        techniqueOverlay.setAttribute("aria-hidden", "true");
+        clearTechniqueParticles();
+    }, 1200);
+}
+
+techniqueButton.addEventListener("click", unleashTechnique);
+
+// ==========================================
+// ANIMASI SCROLL
+// ==========================================
+
+const revealElements = document.querySelectorAll(
+    ".characters, .character-card, .about-section"
+);
+
+revealElements.forEach(element => element.classList.add("reveal"));
+
+if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(element => revealObserver.observe(element));
+} else {
+    revealElements.forEach(element => element.classList.add("show"));
+}
+
+// ==========================================
+// MUSIK
+// ==========================================
+
+const music = new Audio("audio/anime-theme.mp3");
+music.loop = true;
+music.volume = 0.35;
+
+const musicButton = document.createElement("button");
+musicButton.className = "music-button";
+musicButton.textContent = "♫";
+musicButton.setAttribute("aria-label", "Putar atau hentikan musik");
+musicButton.title = "Putar musik";
+musicButton.type = "button";
+document.body.appendChild(musicButton);
+
+let musicPlaying = false;
+
+musicButton.addEventListener("click", async () => {
+    if (!musicPlaying) {
+        try {
+            await music.play();
+            musicPlaying = true;
+            musicButton.textContent = "Ⅱ";
+            musicButton.title = "Hentikan musik";
+            musicButton.setAttribute("aria-label", "Hentikan musik");
+        } catch (error) {
+            alert("Musik belum bisa diputar. Periksa file audio/anime-theme.mp3.");
+        }
+    } else {
+        music.pause();
+        musicPlaying = false;
+        musicButton.textContent = "♫";
+        musicButton.title = "Putar musik";
+        musicButton.setAttribute("aria-label", "Putar musik");
+    }
+});
+
+// ==========================================
+// PARTIKEL HERO
+// ==========================================
+
+const heroSection = document.querySelector(".hero");
+
+if (heroSection && !heroSection.querySelector(".particle-layer")) {
+    const particleLayer = document.createElement("div");
+    particleLayer.className = "particle-layer";
+    particleLayer.setAttribute("aria-hidden", "true");
+
+    const particleColors = ["#ff405b", "#ff7188", "#ffb4c0"];
+
+    for (let i = 0; i < 28; i++) {
+        const particle = document.createElement("span");
+        particle.className = "particle";
+
+        particle.style.setProperty("--left", Math.random() * 100 + "%");
+        particle.style.setProperty("--size", (Math.random() * 4 + 2) + "px");
+        particle.style.setProperty("--duration", (Math.random() * 7 + 6) + "s");
+        particle.style.setProperty("--delay", (-Math.random() * 12) + "s");
+        particle.style.setProperty("--drift", (Math.random() * 120 - 60) + "px");
+        particle.style.setProperty(
+            "--particle-color",
+            particleColors[Math.floor(Math.random() * particleColors.length)]
+        );
+
+        particleLayer.appendChild(particle);
+    }
+
+    heroSection.prepend(particleLayer);
+}
+
+// ==========================================
+// CINEMATIC OPENING
+// ==========================================
+
+const cinematicIntro = document.getElementById("cinematicIntro");
+const introEnter = document.getElementById("introEnter");
+const introSkip = document.getElementById("introSkip");
+const introParticles = document.getElementById("introParticles");
+const INTRO_KEY = "kimetsuIntroSeen";
+
+if (introParticles) {
+    for (let i = 0; i < 32; i++) {
+        const spark = document.createElement("span");
+        spark.className = "intro-spark";
+
+        spark.style.setProperty("--spark-left", Math.random() * 100 + "%");
+        spark.style.setProperty("--spark-size", (Math.random() * 3 + 1) + "px");
+        spark.style.setProperty("--spark-duration", (Math.random() * 6 + 5) + "s");
+        spark.style.setProperty("--spark-delay", (-Math.random() * 10) + "s");
+        spark.style.setProperty("--spark-drift", (Math.random() * 100 - 50) + "px");
+
+        introParticles.appendChild(spark);
+    }
+}
+
+let introAlreadySeen = false;
+
+try {
+    introAlreadySeen = sessionStorage.getItem(INTRO_KEY) === "true";
+} catch (error) {
+    introAlreadySeen = false;
+}
+
+if (introAlreadySeen) {
+    cinematicIntro.hidden = true;
+} else {
+    document.body.classList.add("intro-open");
+}
+
+function exitCinematicIntro() {
+    if (
+        cinematicIntro.hidden ||
+        cinematicIntro.classList.contains("intro-exit")
+    ) return;
+
+    cinematicIntro.classList.add("intro-exit");
+    document.body.classList.remove("intro-open");
+
+    try {
+        sessionStorage.setItem(INTRO_KEY, "true");
+    } catch (error) {
+        // Opening tetap berfungsi tanpa sessionStorage.
+    }
+
+    setTimeout(() => {
+        cinematicIntro.hidden = true;
+    }, 950);
+}
+
+introEnter.addEventListener("click", exitCinematicIntro);
+introSkip.addEventListener("click", exitCinematicIntro);
+
+document.addEventListener("keydown", event => {
+    if (
+        event.key === "Escape" &&
+        !cinematicIntro.hidden &&
+        !cinematicIntro.classList.contains("intro-exit")
+    ) {
+        exitCinematicIntro();
+    }
+});
+</script>
+</body>
+</html>
